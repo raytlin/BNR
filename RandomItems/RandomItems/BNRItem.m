@@ -50,6 +50,11 @@
 -(instancetype)init{
     return [self initWithItemName:@"Item"];
 }
+
+-(instancetype)initWithitemName:(NSString *)name serialNumber:(NSString *)sNumber{
+    BNRItem* item = [self initWithItemName:name valueInDollars:0 serialNumber:sNumber];
+    return item;
+}
 +(instancetype)randomItem{
     NSArray* randomAdjectiveList = @[@"fluffy", @"rusty", @"shiny"];
     NSArray* randomNounList = @[@"bear", @"spork", @"mac"];

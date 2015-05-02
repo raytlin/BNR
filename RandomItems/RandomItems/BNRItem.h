@@ -32,6 +32,8 @@
 
 -(instancetype)initWithItemName:(NSString*)name;
 
+-(instancetype)initWithitemName:(NSString*)name serialNumber:(NSString*)sNumber;
+
 +(instancetype)randomItem;
 
 

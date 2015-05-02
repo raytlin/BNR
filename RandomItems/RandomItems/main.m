@@ -39,7 +39,7 @@ int main(int argc, const char * argv[]) {
         }
         
         for (BNRItem* item in items){
-            NSLog(@"%@ %@", item.itemName, item.serialNumber);
+            NSLog(@"%@ %@", item.itemName, [[BNRItem alloc]initWithitemName:@"ray" serialNumber:@"2"].itemName);
         }
         
         

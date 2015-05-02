@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6EAB97B41AF5512300E27952 /* BNRContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EAB97B31AF5512300E27952 /* BNRContainer.m */; };
 		71BFCB831AF48EA900034EE9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BFCB821AF48EA900034EE9 /* main.m */; };
 		71BFCB8B1AF4925700034EE9 /* BNRItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BFCB8A1AF4925700034EE9 /* BNRItem.m */; };
 /* End PBXBuildFile section */
@@ -24,6 +25,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6EAB97B21AF5512300E27952 /* BNRContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRContainer.h; sourceTree = "<group>"; };
+		6EAB97B31AF5512300E27952 /* BNRContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRContainer.m; sourceTree = "<group>"; };
 		71BFCB7F1AF48EA900034EE9 /* RandomItems */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RandomItems; sourceTree = BUILT_PRODUCTS_DIR; };
 		71BFCB821AF48EA900034EE9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		71BFCB891AF4925700034EE9 /* BNRItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItem.h; sourceTree = "<group>"; };
@@ -61,6 +64,8 @@
 			isa = PBXGroup;
 			children = (
 				71BFCB821AF48EA900034EE9 /* main.m */,
+				6EAB97B21AF5512300E27952 /* BNRContainer.h */,
+				6EAB97B31AF5512300E27952 /* BNRContainer.m */,
 				71BFCB891AF4925700034EE9 /* BNRItem.h */,
 				71BFCB8A1AF4925700034EE9 /* BNRItem.m */,
 			);
@@ -125,6 +130,7 @@
 			files = (
 				71BFCB831AF48EA900034EE9 /* main.m in Sources */,
 				71BFCB8B1AF4925700034EE9 /* BNRItem.m in Sources */,
+				6EAB97B41AF5512300E27952 /* BNRContainer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +247,7 @@
 				71BFCB881AF48EA900034EE9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
