@@ -32,6 +32,8 @@
 
 -(instancetype)initWithItemName:(NSString*)name;
 
++(instancetype)randomItem;
+
 
 
 

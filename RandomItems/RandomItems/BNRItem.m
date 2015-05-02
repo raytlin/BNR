@@ -50,5 +50,25 @@
 -(instancetype)init{
     return [self initWithItemName:@"Item"];
 }
++(instancetype)randomItem{
+    NSArray* randomAdjectiveList = @[@"fluffy", @"rusty", @"shiny"];
+    NSArray* randomNounList = @[@"bear", @"spork", @"mac"];
+    
+    //why get a random number this way using % instead of just passing in an argument of the count?
+    NSInteger adjectiveIndex = arc4random() % [randomAdjectiveList count];
+    NSInteger nounIndex = arc4random() % [randomNounList count];
+    
+    //possible errors could occur here bc i chnaged stuff just to see if it would work
+    NSString* randomName = [[NSString alloc]initWithFormat:@"%@ %@", randomAdjectiveList[adjectiveIndex], randomNounList[nounIndex]];
+    
+    int randomValue = arc4random() % 100;
+    
+    //a single char plus a random number results in a char?????
+    NSString* randomSerialNumber = [NSString stringWithFormat:@"%c%c%c", 'O'+arc4random()%10, 'A'+arc4random()%26, 'O'+arc4random()%10];
+    
+    BNRItem* newItem = [[self alloc]initWithItemName:randomName valueInDollars:randomValue serialNumber:randomSerialNumber];
+    
+    return newItem;
+}
 
 @end
