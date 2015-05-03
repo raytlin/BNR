@@ -12,7 +12,7 @@
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
-//        NSMutableArray* items = [[NSMutableArray alloc]init];
+        NSMutableArray* items = [[NSMutableArray alloc]init];
 //        
 //        [items addObject:@"one"];
 //        [items addObject:@"two"];
@@ -31,16 +31,38 @@ int main(int argc, const char * argv[]) {
 //        
 //        NSLog(@"%@ %@ %@ %d", [item itemName], [item dateCreated], [item serialNumber], [item valueInDollars]);
         
-        NSMutableArray* items = [[NSMutableArray alloc] init];
+//        NSMutableArray* items = [[NSMutableArray alloc] init];
+//        
+//        for (int i =0; i < 10; i++ ){
+//            BNRItem* item = [BNRItem randomItem];
+//            [items addObject:item];
+//        }
+//        
+//        for (BNRItem* item in items){
+//            NSLog(@"%@ %@", item.itemName, [[BNRItem alloc]initWithitemName:@"ray" serialNumber:@"2"].itemName);
+//        }
+//        
+//        items = nil;
         
-        for (int i =0; i < 10; i++ ){
-            BNRItem* item = [BNRItem randomItem];
-            [items addObject:item];
-        }
+        BNRItem* backpack = [[BNRItem alloc]initWithItemName:@"backpack"];
+        [items addObject:backpack];
         
-        for (BNRItem* item in items){
-            NSLog(@"%@ %@", item.itemName, [[BNRItem alloc]initWithitemName:@"ray" serialNumber:@"2"].itemName);
+        BNRItem* calculator = [[BNRItem alloc]initWithItemName:@"calculator"];
+        [items addObject:calculator];
+        
+        backpack.containedItem = calculator;
+        
+        backpack = nil;
+        calculator = nil;
+        
+        for (BNRItem *item in items){
+            NSLog(@"%@", item);
         }
+        NSLog(@"setting items to nil");
+        items = nil;
+        NSString* name = @"ray";
+        name = [name stringByAppendingString:@"gary"];
+        NSLog(@"%@", name);
         
         
     }
