@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "BNRItemsTableView.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    BNRItemsTableView* itemsViewController = [[BNRItemsTableView alloc]init];
+    
+    self.window.rootViewController = itemsViewController;
+    
     return YES;
 }
 

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7128E2CD1AF7C615001D1414 /* BNRItemsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7128E2CC1AF7C615001D1414 /* BNRItemsTableView.m */; };
+		7128E2D01AF7C838001D1414 /* BNRItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7128E2CF1AF7C838001D1414 /* BNRItem.m */; };
+		7128E2D31AF7CBE7001D1414 /* BNRItemsStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 7128E2D21AF7CBE7001D1414 /* BNRItemsStore.m */; };
 		71E546531AF7347D008CE941 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E546521AF7347D008CE941 /* main.m */; };
 		71E546561AF7347D008CE941 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E546551AF7347D008CE941 /* AppDelegate.m */; };
 		71E546591AF7347D008CE941 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E546581AF7347D008CE941 /* ViewController.m */; };
@@ -27,6 +30,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7128E2CB1AF7C615001D1414 /* BNRItemsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BNRItemsTableView.h; path = ../BNRItemsTableView.h; sourceTree = "<group>"; };
+		7128E2CC1AF7C615001D1414 /* BNRItemsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BNRItemsTableView.m; path = ../BNRItemsTableView.m; sourceTree = "<group>"; };
+		7128E2CE1AF7C838001D1414 /* BNRItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItem.h; sourceTree = "<group>"; };
+		7128E2CF1AF7C838001D1414 /* BNRItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItem.m; sourceTree = "<group>"; };
+		7128E2D11AF7CBE7001D1414 /* BNRItemsStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItemsStore.h; sourceTree = "<group>"; };
+		7128E2D21AF7CBE7001D1414 /* BNRItemsStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItemsStore.m; sourceTree = "<group>"; };
 		71E5464D1AF7347D008CE941 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71E546511AF7347D008CE941 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71E546521AF7347D008CE941 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -81,7 +90,13 @@
 		71E5464F1AF7347D008CE941 /* Homepwner */ = {
 			isa = PBXGroup;
 			children = (
+				7128E2CE1AF7C838001D1414 /* BNRItem.h */,
+				7128E2CF1AF7C838001D1414 /* BNRItem.m */,
+				7128E2CB1AF7C615001D1414 /* BNRItemsTableView.h */,
+				7128E2CC1AF7C615001D1414 /* BNRItemsTableView.m */,
 				71E546541AF7347D008CE941 /* AppDelegate.h */,
+				7128E2D11AF7CBE7001D1414 /* BNRItemsStore.h */,
+				7128E2D21AF7CBE7001D1414 /* BNRItemsStore.m */,
 				71E546551AF7347D008CE941 /* AppDelegate.m */,
 				71E546571AF7347D008CE941 /* ViewController.h */,
 				71E546581AF7347D008CE941 /* ViewController.m */,
@@ -220,8 +235,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				71E546591AF7347D008CE941 /* ViewController.m in Sources */,
+				7128E2CD1AF7C615001D1414 /* BNRItemsTableView.m in Sources */,
+				7128E2D01AF7C838001D1414 /* BNRItem.m in Sources */,
 				71E546561AF7347D008CE941 /* AppDelegate.m in Sources */,
 				71E546531AF7347D008CE941 /* main.m in Sources */,
+				7128E2D31AF7CBE7001D1414 /* BNRItemsStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +434,7 @@
 				71E546721AF7347E008CE941 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		71E546731AF7347E008CE941 /* Build configuration list for PBXNativeTarget "HomepwnerTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +443,7 @@
 				71E546751AF7347E008CE941 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
