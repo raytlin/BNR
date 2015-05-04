@@ -41,6 +41,8 @@
         frame.origin = CGPointMake(x,y);
         messageLabel.frame = frame;
         
+        [self.view addSubview:messageLabel];
+        
         
     }
 }
