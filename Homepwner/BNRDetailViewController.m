@@ -8,6 +8,7 @@
 
 #import "BNRDetailViewController.h"
 #import "BNRItem.h"
+#import "BNRDateChangeViewController.h"
 
 @interface BNRDetailViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
@@ -19,6 +20,11 @@
 
 @implementation BNRDetailViewController
 
+-(void)setItem:(BNRItem *)item{
+    _item = item;
+    self.navigationItem.title = _item.itemName;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -28,6 +34,25 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)changeDate:(id)sender {
+    BNRDateChangeViewController* dcvc = [[BNRDateChangeViewController alloc]init];
+    dcvc.item = self.item;
+    
+    [self.navigationController pushViewController:dcvc animated:YES];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    
+    [self.view endEditing:YES];
+    
+    BNRItem* item = [[BNRItem alloc]init];
+    item = self.item;
+    
+    item.itemName = self.nameField.text;
+    item.serialNumber = self.serialNumberField.text;
+    item.valueInDollars = [self.valueField.text intValue];
+}
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -35,7 +60,7 @@
     BNRItem* item = self.item;
     self.nameField.text = item.itemName;
     self.serialNumberField.text = item.serialNumber;
-    self.valueField.text = [NSString stringWithFormat:@"$%d", item.valueInDollars];
+    self.valueField.text = [NSString stringWithFormat:@"%d", item.valueInDollars];
     static NSDateFormatter *dateFormatter = nil;
     if (!dateFormatter) {
         dateFormatter = [[NSDateFormatter alloc]init];
@@ -45,6 +70,10 @@
     
     self.dateLabel.text = [dateFormatter stringFromDate:item.dateCreated];
     
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];
 }
 
 @end

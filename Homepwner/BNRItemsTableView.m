@@ -10,18 +10,18 @@
 
 @interface BNRItemsTableView ()
 
-@property (nonatomic, strong) IBOutlet UIView* headerView;
+//@property (nonatomic, strong) IBOutlet UIView* headerView;
 
 @end
 
 @implementation BNRItemsTableView
 
--(UIView*)headerView{
-    if(!_headerView){
-        [[NSBundle mainBundle]loadNibNamed:@"HeaderView" owner:self options:nil];
-    }
-    return _headerView;
-}
+//-(UIView*)headerView{
+//    if(!_headerView){
+//        [[NSBundle mainBundle]loadNibNamed:@"HeaderView" owner:self options:nil];
+//    }
+//    return _headerView;
+//}
 
 -(IBAction)addNewItem:(id)sender{
     
@@ -49,6 +49,15 @@
     self = [super initWithStyle:UITableViewStylePlain];
     
     if(self){
+        
+        UINavigationItem *navItem = self.navigationItem;
+        navItem.title = @"Homepwner";
+        
+        
+        UIBarButtonItem* bbi = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewItem:)];
+        navItem.rightBarButtonItem = bbi;
+        
+        navItem.leftBarButtonItem = self.editButtonItem;
 //        for (int i =0; i<5; i++) {
 //            [[BNRItemsStore sharedStore] createItem];
 //        }
@@ -72,7 +81,7 @@
     NSArray* items = [BNRItemsStore sharedStore].allItems;
     
     BNRItem* item = items[indexPath.row];
-    cell.textLabel.text = item.description;
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ (%@): Worth $%d", item.itemName, item.serialNumber, item.valueInDollars];
     
     
 //    NSArray* items = [[BNRItemsStore sharedStore] allItems];
@@ -112,12 +121,17 @@
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+}
+
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
     
-    UIView* header = self.headerView;
-    [self.tableView setTableHeaderView:header];
+//    UIView* header = self.headerView;
+//    [self.tableView setTableHeaderView:header];
 }
 
 @end
