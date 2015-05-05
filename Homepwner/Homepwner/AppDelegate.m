@@ -21,7 +21,10 @@
     
     BNRItemsTableView* itemsViewController = [[BNRItemsTableView alloc]init];
     
-    self.window.rootViewController = itemsViewController;
+    //self.window.rootViewController = itemsViewController;
+    
+    UINavigationController* navController = [[UINavigationController alloc]initWithRootViewController:itemsViewController];
+    self.window.rootViewController = navController;
     
     return YES;
 }

@@ -10,6 +10,7 @@
 #import <Foundation/Foundation.h>
 #import "BNRItem.h"
 #import "BNRItemsStore.h"
+#import "BNRDetailViewController.h"
 
 @interface BNRItemsTableView : UITableViewController <UITableViewDelegate, UITableViewDataSource>
 

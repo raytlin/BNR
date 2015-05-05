@@ -10,6 +10,8 @@
 		7128E2CD1AF7C615001D1414 /* BNRItemsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7128E2CC1AF7C615001D1414 /* BNRItemsTableView.m */; };
 		7128E2D01AF7C838001D1414 /* BNRItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7128E2CF1AF7C838001D1414 /* BNRItem.m */; };
 		7128E2D31AF7CBE7001D1414 /* BNRItemsStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 7128E2D21AF7CBE7001D1414 /* BNRItemsStore.m */; };
+		7151A4F51AF8847500CA9079 /* BNRDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7151A4F31AF8847500CA9079 /* BNRDetailViewController.m */; };
+		7151A4F61AF8847500CA9079 /* BNRDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7151A4F41AF8847500CA9079 /* BNRDetailViewController.xib */; };
 		7165AB9E1AF8073F00C0717D /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7165AB9D1AF8073F00C0717D /* HeaderView.xib */; };
 		71E546531AF7347D008CE941 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E546521AF7347D008CE941 /* main.m */; };
 		71E546561AF7347D008CE941 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E546551AF7347D008CE941 /* AppDelegate.m */; };
@@ -37,6 +39,9 @@
 		7128E2CF1AF7C838001D1414 /* BNRItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItem.m; sourceTree = "<group>"; };
 		7128E2D11AF7CBE7001D1414 /* BNRItemsStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItemsStore.h; sourceTree = "<group>"; };
 		7128E2D21AF7CBE7001D1414 /* BNRItemsStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItemsStore.m; sourceTree = "<group>"; };
+		7151A4F21AF8847500CA9079 /* BNRDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BNRDetailViewController.h; path = ../BNRDetailViewController.h; sourceTree = "<group>"; };
+		7151A4F31AF8847500CA9079 /* BNRDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BNRDetailViewController.m; path = ../BNRDetailViewController.m; sourceTree = "<group>"; };
+		7151A4F41AF8847500CA9079 /* BNRDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BNRDetailViewController.xib; path = ../BNRDetailViewController.xib; sourceTree = "<group>"; };
 		7165AB9D1AF8073F00C0717D /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		71E5464D1AF7347D008CE941 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71E546511AF7347D008CE941 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -92,15 +97,18 @@
 		71E5464F1AF7347D008CE941 /* Homepwner */ = {
 			isa = PBXGroup;
 			children = (
+				7151A4F21AF8847500CA9079 /* BNRDetailViewController.h */,
+				7151A4F31AF8847500CA9079 /* BNRDetailViewController.m */,
+				7151A4F41AF8847500CA9079 /* BNRDetailViewController.xib */,
 				7128E2CE1AF7C838001D1414 /* BNRItem.h */,
 				7128E2CF1AF7C838001D1414 /* BNRItem.m */,
 				7128E2CB1AF7C615001D1414 /* BNRItemsTableView.h */,
 				7128E2CC1AF7C615001D1414 /* BNRItemsTableView.m */,
 				7165AB9D1AF8073F00C0717D /* HeaderView.xib */,
 				71E546541AF7347D008CE941 /* AppDelegate.h */,
+				71E546551AF7347D008CE941 /* AppDelegate.m */,
 				7128E2D11AF7CBE7001D1414 /* BNRItemsStore.h */,
 				7128E2D21AF7CBE7001D1414 /* BNRItemsStore.m */,
-				71E546551AF7347D008CE941 /* AppDelegate.m */,
 				71E546571AF7347D008CE941 /* ViewController.h */,
 				71E546581AF7347D008CE941 /* ViewController.m */,
 				71E5465A1AF7347E008CE941 /* Main.storyboard */,
@@ -221,6 +229,7 @@
 				71E546611AF7347E008CE941 /* LaunchScreen.xib in Resources */,
 				71E5465E1AF7347E008CE941 /* Images.xcassets in Resources */,
 				7165AB9E1AF8073F00C0717D /* HeaderView.xib in Resources */,
+				7151A4F61AF8847500CA9079 /* BNRDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +250,7 @@
 				71E546591AF7347D008CE941 /* ViewController.m in Sources */,
 				7128E2CD1AF7C615001D1414 /* BNRItemsTableView.m in Sources */,
 				7128E2D01AF7C838001D1414 /* BNRItem.m in Sources */,
+				7151A4F51AF8847500CA9079 /* BNRDetailViewController.m in Sources */,
 				71E546561AF7347D008CE941 /* AppDelegate.m in Sources */,
 				71E546531AF7347D008CE941 /* main.m in Sources */,
 				7128E2D31AF7CBE7001D1414 /* BNRItemsStore.m in Sources */,

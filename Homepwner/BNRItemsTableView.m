@@ -104,6 +104,14 @@
     [[BNRItemsStore sharedStore]moveItemAtIndex:sourceIndexPath.row toIndex:destinationIndexPath.row];
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    BNRDetailViewController* detailViewController = [[BNRDetailViewController alloc]init];
+    
+    detailViewController.item =[BNRItemsStore sharedStore].allItems[indexPath.row];
+    
+    [self.navigationController pushViewController:detailViewController animated:YES];
+}
+
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
