@@ -9,16 +9,44 @@
 #import "BNRDetailViewController.h"
 #import "BNRItem.h"
 #import "BNRDateChangeViewController.h"
+#import "BNRImageStore.h"
 
-@interface BNRDetailViewController ()
+@interface BNRDetailViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate>
+
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *serialNumberField;
 @property (weak, nonatomic) IBOutlet UITextField *valueField;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 
 @end
 
 @implementation BNRDetailViewController
+- (IBAction)takePicture:(id)sender {
+    
+    UIImagePickerController* imagePicker = [[UIImagePickerController alloc] init];
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }
+    else{
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    
+    imagePicker.delegate = self;
+    
+    [self presentViewController:imagePicker animated:YES completion:nil];
+    
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    UIImage* image = info[UIImagePickerControllerOriginalImage];
+    
+    [[BNRImageStore sharedStore]setImage:image forKey:self.item.itemKey];
+    
+    self.imageView.image = image;
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 -(void)setItem:(BNRItem *)item{
     _item = item;
@@ -70,6 +98,17 @@
     
     self.dateLabel.text = [dateFormatter stringFromDate:item.dateCreated];
     
+    NSString* imageKey = self.item.itemKey;
+    
+    UIImage* imageToDisplay = [[BNRImageStore sharedStore]imageForKey:imageKey];
+    
+    self.imageView.image = imageToDisplay;
+    
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
