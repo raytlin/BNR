@@ -8,7 +8,28 @@
 
 #import "BNRItemsTableView.h"
 
-@implementation BNRItemsTableView 
+@interface BNRItemsTableView ()
+
+@property (nonatomic, strong) IBOutlet UIView* headerView;
+
+@end
+
+@implementation BNRItemsTableView
+
+-(UIView*)headerView{
+    if(!_headerView){
+        [[NSBundle mainBundle]loadNibNamed:@"HeaderView" owner:self options:nil];
+    }
+    return _headerView;
+}
+
+-(IBAction)addNewItem:(id)sender{
+    
+}
+
+-(IBAction)toggleEditingMode:(id)sender{
+    
+}
 
 -(instancetype)init{
     self = [super initWithStyle:UITableViewStylePlain];
@@ -53,6 +74,9 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
+    
+    UIView* header = self.headerView;
+    [self.tableView setTableHeaderView:header];
 }
 
 @end
