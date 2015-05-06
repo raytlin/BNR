@@ -25,6 +25,8 @@
 
 @implementation BNRDrawView
 
+
+
 -(void)deleteLine:(id)sender{
     [self.finishedLines removeObject:self.selectedLine];
     
@@ -35,6 +37,8 @@
     NSLog(@"Recognized double tap");
     [self.linesInProgress removeAllObjects];
     [self.finishedLines removeAllObjects];
+    
+    
     [self setNeedsDisplay];
 }
 
@@ -236,6 +240,9 @@
         BNRLine* line = self.linesInProgress[key];
         [self.finishedLines addObject:line];
         [self.linesInProgress removeObjectForKey:key];
+        
+        
+        
     }
     [self setNeedsDisplay];
 }
