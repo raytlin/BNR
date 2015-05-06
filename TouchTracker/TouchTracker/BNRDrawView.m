@@ -20,6 +20,13 @@
 
 @implementation BNRDrawView
 
+-(void)doubleTap:(UIGestureRecognizer*)gr{
+    NSLog(@"Recognized double tap");
+    [self.linesInProgress removeAllObjects];
+    [self.finishedLines removeAllObjects];
+    [self setNeedsDisplay];
+}
+
 -(instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
@@ -27,6 +34,11 @@
         self.finishedLines = [[NSMutableArray alloc]init];
         self.backgroundColor = [UIColor grayColor];
         self.multipleTouchEnabled = YES;
+        
+        UITapGestureRecognizer *doubleTapRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(doubleTap:)];
+        doubleTapRecognizer.numberOfTapsRequired = 2;
+        doubleTapRecognizer.delaysTouchesBegan = YES;
+        [self addGestureRecognizer:doubleTapRecognizer];
     }
     return self;
 }
