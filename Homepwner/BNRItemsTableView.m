@@ -26,12 +26,25 @@
 -(IBAction)addNewItem:(id)sender{
     
     BNRItem* newItem = [[BNRItemsStore sharedStore]createItem];
-    NSInteger lastRow = [[BNRItemsStore sharedStore].allItems indexOfObject:newItem];
+//    NSInteger lastRow = [[BNRItemsStore sharedStore].allItems indexOfObject:newItem];
+//    
+//    //NSInteger lastRow = [self.tableView numberOfRowsInSection:0];
+//    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:lastRow inSection:0];
+//    
+//    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
     
-    //NSInteger lastRow = [self.tableView numberOfRowsInSection:0];
-    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:lastRow inSection:0];
+    BNRDetailViewController *detailViewController = [[BNRDetailViewController alloc]initForNewItem:YES];
+    detailViewController.item = newItem;
     
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+    detailViewController.dismissBlock = ^{
+        [self.tableView reloadData];
+    };
+    
+    UINavigationController* navController = [[UINavigationController alloc]initWithRootViewController:detailViewController];
+    
+    navController.modalPresentationStyle = UIModalPresentationFormSheet;
+    
+    [self presentViewController:navController animated:YES completion:nil];
 }
 
 -(IBAction)toggleEditingMode:(id)sender{
@@ -114,7 +127,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    BNRDetailViewController* detailViewController = [[BNRDetailViewController alloc]init];
+    BNRDetailViewController* detailViewController = [[BNRDetailViewController alloc]initForNewItem:NO];
     
     detailViewController.item =[BNRItemsStore sharedStore].allItems[indexPath.row];
     

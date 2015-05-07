@@ -16,6 +16,7 @@
 @implementation BNRDateChangeViewController
 - (IBAction)saveDate:(id)sender {
     self.item.dateCreated = self.changeDatePicker.date;
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
