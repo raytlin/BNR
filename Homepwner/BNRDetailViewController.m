@@ -39,6 +39,8 @@
     
 }
 
+
+
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     UIImage* image = info[UIImagePickerControllerOriginalImage];
     
@@ -55,7 +57,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    UIImageView *iv = [[UIImageView alloc]initWithImage:nil];
+    iv.contentMode = UIViewContentModeScaleAspectFit;
+    iv.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:iv];
 }
 
 - (void)didReceiveMemoryWarning {
