@@ -61,6 +61,15 @@
     iv.contentMode = UIViewContentModeScaleAspectFit;
     iv.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:iv];
+    
+    [self.imageView setContentHuggingPriority:200 forAxis:UILayoutConstraintAxisVertical];
+    [self.imageView setContentCompressionResistancePriority:700 forAxis:UILayoutConstraintAxisVertical];
+    
+    NSDictionary *nameMap = @{@"imageView": self.imageView, @"toolbar": self.toolbar, @"dateLabel": self.dateLabel};
+    NSArray *horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[imageView]-0-|" options:0 metrics:nil views:nameMap];
+    NSArray * verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[dateLabel]-[imageView]-[toolbar]" options:0 metrics:nil views:nameMap];
+    [self.view addConstraints:horizontalConstraints];
+    [self.view addConstraints:verticalConstraints];
 }
 
 - (void)didReceiveMemoryWarning {
