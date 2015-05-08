@@ -10,42 +10,25 @@
 
 @implementation BNRItem
 
+-(void)encodeWithCoder:(NSCoder *)aCoder{
+    [aCoder encodeObject:self.itemName forKey:@"itemName"];
+    [aCoder encodeObject:self.serialNumber forKey:@"serialNumber"];
+    [aCoder encodeObject:self.dateCreated forKey:@"dateCreated"];
+    [aCoder encodeObject:self.itemKey forKey:@"itemKey"];
+    [aCoder encodeInt:self.valueInDollars forKey:@"valueInDollars"];
+}
 
-
-//
-//-(BNRItem *)containedItem{
-//    return _containedItem;
-//}
-//
-//-(void)setContainer:(BNRItem *)item{
-//    _container = item;
-//}
-//
-//-(BNRItem *)container{
-//    return _container;
-//}
-//
-//-(void)setItemName:(NSString *)str{
-//    _itemName = str;
-//}
-//-(NSString *)itemName {
-//    return _itemName;
-//}
-//-(void)setSerialNumber:(NSString *)str{
-//    _serialNumber = str;
-//}
-//-(NSString *)serialNumber{
-//    return _serialNumber;
-//}
-//-(void)setValueInDollars:(int)v{
-//    _valueInDollars = v;
-//}
-//-(int)valueInDollars{
-//    return _valueInDollars;
-//}
-//-(NSDate *)dateCreated{
-//    return _dateCreated;
-//}
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super init];
+    if (self) {
+        _dateCreated = [aDecoder decodeObjectForKey:@"dateCreated"];
+        _itemName = [aDecoder decodeObjectForKey:@"itemName"];
+        _serialNumber = [aDecoder decodeObjectForKey:@"serialNumber"];
+        _itemKey = [aDecoder decodeObjectForKey:@"itemKey"];
+        _valueInDollars = [aDecoder decodeIntForKey:@"valueInDollars"];
+    }
+    return self;
+}
 
 - (instancetype)initWithItemName:(NSString *)name valueInDollars:(int)value serialNumber:(NSString *)sNumber{
     self = [super init];

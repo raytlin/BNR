@@ -12,6 +12,8 @@
 
 @property (nonatomic, strong)NSMutableDictionary* dictionary;
 
+-(NSString*)imagePathForKey:(NSString*)key;
+
 @end
 
 @implementation BNRImageStore
@@ -26,6 +28,12 @@
     });
     
     return sharedStore;
+}
+
+-(NSString *)imagePathForKey:(id)key{
+    NSArray* documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString* documentDirectory = [documentDirectories firstObject];
+    return [documentDirectory stringByAppendingPathComponent:key];
 }
 
 -(instancetype)init{
@@ -44,10 +52,25 @@
 
 -(void)setImage:(UIImage *)image forKey:(NSString *)key{
     [self.dictionary setObject:image forKey:key];
+    
+    NSString* imagePath = [self imagePathForKey:key];
+    NSData* data = UIImageJPEGRepresentation(image, 0.5);
+    
+    [data writeToFile:imagePath atomically:YES];
 }
 
 -(UIImage *)imageForKey:(NSString *)key{
-    return [self.dictionary objectForKey:key];
+    UIImage* result = self.dictionary[key];
+    if (!result) {
+        NSString *imagePath = [self imagePathForKey:key];
+        result = [UIImage imageWithContentsOfFile:imagePath];
+        if (result) {
+            self.dictionary[key] = result;
+        }else{
+            NSLog(@"unable to find %@", [self imagePathForKey:key]);
+        }
+    }
+    return result;
 }
 
 -(void)deleteImageForKey:(NSString *)key{
@@ -55,6 +78,9 @@
         return;
     }
     [self.dictionary removeObjectForKey:key];
+    
+    NSString* imagePath = [self imagePathForKey:key];
+    [[NSFileManager defaultManager]removeItemAtPath:imagePath error:nil];
 }
 
 @end
