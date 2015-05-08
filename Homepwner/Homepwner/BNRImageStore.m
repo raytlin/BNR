@@ -45,16 +45,23 @@
     self = [super init];
     if (self) {
         _dictionary = [[NSMutableDictionary alloc]init];
+        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+        [nc addObserver:self selector:@selector(clearCache:) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
         
     }
     return self;
+}
+
+-(void)clearCache:(NSNotification*)note{
+    NSLog(@"flushing %d images out of the cache", [self.dictionary count]);
+    [self.dictionary removeAllObjects];
 }
 
 -(void)setImage:(UIImage *)image forKey:(NSString *)key{
     [self.dictionary setObject:image forKey:key];
     
     NSString* imagePath = [self imagePathForKey:key];
-    NSData* data = UIImageJPEGRepresentation(image, 0.5);
+    NSData* data = UIImagePNGRepresentation(image);
     
     [data writeToFile:imagePath atomically:YES];
 }
