@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface BNRItem : NSObject <NSCoding>
 
@@ -17,6 +18,9 @@
 
 @property (nonatomic, copy)NSString* itemKey;
 
+@property (nonatomic, strong) UIImage* thumbnail;
+
+- (void)setThumbnailFromImage:(UIImage*)image;
 
 - (void) setItemName:(NSString*)str;
 - (NSString*) itemName;

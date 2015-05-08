@@ -10,6 +10,9 @@
 		6EB527B51AF9370300EC0A30 /* BNRDateChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EB527B31AF9370300EC0A30 /* BNRDateChangeViewController.m */; };
 		6EB527B61AF9370300EC0A30 /* BNRDateChangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EB527B41AF9370300EC0A30 /* BNRDateChangeViewController.xib */; };
 		6EB527B91AF950C300EC0A30 /* BNRImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EB527B81AF950C300EC0A30 /* BNRImageStore.m */; };
+		6EF465A51AFD2F5F002C20D8 /* BNRItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF465A41AFD2F5F002C20D8 /* BNRItemCell.m */; };
+		6EF465A71AFD2FA9002C20D8 /* BNRItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EF465A61AFD2FA9002C20D8 /* BNRItemCell.xib */; };
+		6EF465AA1AFD49A6002C20D8 /* BNRImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF465A91AFD49A6002C20D8 /* BNRImageViewController.m */; };
 		7128E2CD1AF7C615001D1414 /* BNRItemsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7128E2CC1AF7C615001D1414 /* BNRItemsTableView.m */; };
 		7128E2D01AF7C838001D1414 /* BNRItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7128E2CF1AF7C838001D1414 /* BNRItem.m */; };
 		7128E2D31AF7CBE7001D1414 /* BNRItemsStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 7128E2D21AF7CBE7001D1414 /* BNRItemsStore.m */; };
@@ -40,6 +43,11 @@
 		6EB527B41AF9370300EC0A30 /* BNRDateChangeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BNRDateChangeViewController.xib; sourceTree = "<group>"; };
 		6EB527B71AF950C300EC0A30 /* BNRImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRImageStore.h; sourceTree = "<group>"; };
 		6EB527B81AF950C300EC0A30 /* BNRImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRImageStore.m; sourceTree = "<group>"; };
+		6EF465A31AFD2F5F002C20D8 /* BNRItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItemCell.h; sourceTree = "<group>"; };
+		6EF465A41AFD2F5F002C20D8 /* BNRItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItemCell.m; sourceTree = "<group>"; };
+		6EF465A61AFD2FA9002C20D8 /* BNRItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BNRItemCell.xib; sourceTree = "<group>"; };
+		6EF465A81AFD49A6002C20D8 /* BNRImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRImageViewController.h; sourceTree = "<group>"; };
+		6EF465A91AFD49A6002C20D8 /* BNRImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRImageViewController.m; sourceTree = "<group>"; };
 		7128E2CB1AF7C615001D1414 /* BNRItemsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BNRItemsTableView.h; path = ../BNRItemsTableView.h; sourceTree = "<group>"; };
 		7128E2CC1AF7C615001D1414 /* BNRItemsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BNRItemsTableView.m; path = ../BNRItemsTableView.m; sourceTree = "<group>"; };
 		7128E2CE1AF7C838001D1414 /* BNRItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItem.h; sourceTree = "<group>"; };
@@ -113,8 +121,13 @@
 				6EB527B41AF9370300EC0A30 /* BNRDateChangeViewController.xib */,
 				7128E2CE1AF7C838001D1414 /* BNRItem.h */,
 				7128E2CF1AF7C838001D1414 /* BNRItem.m */,
+				6EF465A31AFD2F5F002C20D8 /* BNRItemCell.h */,
+				6EF465A41AFD2F5F002C20D8 /* BNRItemCell.m */,
+				6EF465A61AFD2FA9002C20D8 /* BNRItemCell.xib */,
 				7128E2CB1AF7C615001D1414 /* BNRItemsTableView.h */,
 				7128E2CC1AF7C615001D1414 /* BNRItemsTableView.m */,
+				6EF465A81AFD49A6002C20D8 /* BNRImageViewController.h */,
+				6EF465A91AFD49A6002C20D8 /* BNRImageViewController.m */,
 				71E546541AF7347D008CE941 /* AppDelegate.h */,
 				71E546551AF7347D008CE941 /* AppDelegate.m */,
 				7128E2D11AF7CBE7001D1414 /* BNRItemsStore.h */,
@@ -236,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6EB527B61AF9370300EC0A30 /* BNRDateChangeViewController.xib in Resources */,
+				6EF465A71AFD2FA9002C20D8 /* BNRItemCell.xib in Resources */,
 				71E5465C1AF7347E008CE941 /* Main.storyboard in Resources */,
 				71E546611AF7347E008CE941 /* LaunchScreen.xib in Resources */,
 				71E5465E1AF7347E008CE941 /* Images.xcassets in Resources */,
@@ -262,6 +276,8 @@
 				6EB527B91AF950C300EC0A30 /* BNRImageStore.m in Sources */,
 				7128E2D01AF7C838001D1414 /* BNRItem.m in Sources */,
 				7151A4F51AF8847500CA9079 /* BNRDetailViewController.m in Sources */,
+				6EF465AA1AFD49A6002C20D8 /* BNRImageViewController.m in Sources */,
+				6EF465A51AFD2F5F002C20D8 /* BNRItemCell.m in Sources */,
 				71E546561AF7347D008CE941 /* AppDelegate.m in Sources */,
 				6EB527B51AF9370300EC0A30 /* BNRDateChangeViewController.m in Sources */,
 				71E546531AF7347D008CE941 /* main.m in Sources */,

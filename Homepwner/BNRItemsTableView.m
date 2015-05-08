@@ -7,31 +7,23 @@
 //
 
 #import "BNRItemsTableView.h"
+#import "BNRItemCell.h"
+#import "BNRImageStore.h"
+#import "BNRImageViewController.h"
 
-@interface BNRItemsTableView ()
+@interface BNRItemsTableView () <UIPopoverControllerDelegate>
 
-//@property (nonatomic, strong) IBOutlet UIView* headerView;
+@property (nonatomic, strong) UIPopoverController *imagePopover;
 
 @end
 
 @implementation BNRItemsTableView
 
-//-(UIView*)headerView{
-//    if(!_headerView){
-//        [[NSBundle mainBundle]loadNibNamed:@"HeaderView" owner:self options:nil];
-//    }
-//    return _headerView;
-//}
 
 -(IBAction)addNewItem:(id)sender{
     
     BNRItem* newItem = [[BNRItemsStore sharedStore]createItem];
-//    NSInteger lastRow = [[BNRItemsStore sharedStore].allItems indexOfObject:newItem];
-//    
-//    //NSInteger lastRow = [self.tableView numberOfRowsInSection:0];
-//    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:lastRow inSection:0];
-//    
-//    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+
     
     BNRDetailViewController *detailViewController = [[BNRDetailViewController alloc]initForNewItem:YES];
     detailViewController.item = newItem;
@@ -71,9 +63,7 @@
         navItem.rightBarButtonItem = bbi;
         
         navItem.leftBarButtonItem = self.editButtonItem;
-//        for (int i =0; i<5; i++) {
-//            [[BNRItemsStore sharedStore] createItem];
-//        }
+
     }
     
     return self;
@@ -89,28 +79,50 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
+    //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
     
     NSArray* items = [BNRItemsStore sharedStore].allItems;
     
+    BNRItemCell* cell = [tableView dequeueReusableCellWithIdentifier:@"BNRItemCell" forIndexPath:indexPath];
+    
+    
     BNRItem* item = items[indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ (%@): Worth $%d", item.itemName, item.serialNumber, item.valueInDollars];
+    cell.nameLabel.text = item.itemName;
+    cell.valueLabel.text = [NSString stringWithFormat:@"%d", item.valueInDollars];
+    cell.thumbnailView.image = item.thumbnail;
+    cell.serialNumberLabel.text = item.serialNumber;
     
+    __weak BNRItemCell * weakCell = cell;
     
-//    NSArray* items = [[BNRItemsStore sharedStore] allItems];
-//    
-//    if (indexPath.row < [items count]){
-//        BNRItem* item = items[indexPath.row];
-//    
-//        cell.textLabel.text = item.description;
-//        cell.detailTextLabel.text = item.itemName;
-//    }
-//    else{
-//        cell.textLabel.text = @"no more rows!";
-//    }
-    
+    cell.actionBlock = ^{
+        NSLog(@"Going to show an image for %@", item);
+        BNRItemCell* strongCell = weakCell;
+        
+        
+        if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+            NSString* itemKey = item.itemKey;
+            UIImage *img = [[BNRImageStore sharedStore]imageForKey:itemKey];
+            if (!img) {
+                return;
+            }
+            //CGRect rect = [self.view convertRect:cell.thumbnailView.bounds fromView:cell.thumbnailView];
+            
+            CGRect rect = [self.view convertRect:strongCell.thumbnailView.bounds fromView:strongCell.thumbnailView];
+            
+            BNRImageViewController *ivc = [[BNRImageViewController alloc]init];
+            ivc.image = img;
+            self.imagePopover = [[UIPopoverController alloc]initWithContentViewController:ivc];
+            self.imagePopover.delegate = self;
+            self.imagePopover.popoverContentSize = CGSizeMake(600, 600);
+            [self.imagePopover presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        }
+    };
     
     return cell;
+}
+
+-(void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController{
+    self.imagePopover = nil;
 }
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -141,10 +153,10 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
+    //[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
+    UINib *nib = [UINib nibWithNibName:@"BNRItemCell" bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"BNRItemCell"];
     
-//    UIView* header = self.headerView;
-//    [self.tableView setTableHeaderView:header];
 }
 
 @end
