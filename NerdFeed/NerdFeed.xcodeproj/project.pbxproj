@@ -15,6 +15,7 @@
 		6E8BA1051AFD856F008C321E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E8BA1031AFD856F008C321E /* LaunchScreen.xib */; };
 		6E8BA1111AFD856F008C321E /* NerdFeedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8BA1101AFD856F008C321E /* NerdFeedTests.m */; };
 		6E8BA11C1AFD85A9008C321E /* BNRCoursesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8BA11B1AFD85A9008C321E /* BNRCoursesViewController.m */; };
+		7134417C1B006C1100155B82 /* BNRWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7134417B1B006C1100155B82 /* BNRWebViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,8 @@
 		6E8BA1101AFD856F008C321E /* NerdFeedTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NerdFeedTests.m; sourceTree = "<group>"; };
 		6E8BA11A1AFD85A9008C321E /* BNRCoursesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BNRCoursesViewController.h; path = ../BNRCoursesViewController.h; sourceTree = "<group>"; };
 		6E8BA11B1AFD85A9008C321E /* BNRCoursesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BNRCoursesViewController.m; path = ../BNRCoursesViewController.m; sourceTree = "<group>"; };
+		7134417A1B006C1100155B82 /* BNRWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRWebViewController.h; sourceTree = "<group>"; };
+		7134417B1B006C1100155B82 /* BNRWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRWebViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,8 @@
 			children = (
 				6E8BA11A1AFD85A9008C321E /* BNRCoursesViewController.h */,
 				6E8BA11B1AFD85A9008C321E /* BNRCoursesViewController.m */,
+				7134417A1B006C1100155B82 /* BNRWebViewController.h */,
+				7134417B1B006C1100155B82 /* BNRWebViewController.m */,
 				6E8BA0F81AFD856F008C321E /* AppDelegate.h */,
 				6E8BA0F91AFD856F008C321E /* AppDelegate.m */,
 				6E8BA0FB1AFD856F008C321E /* ViewController.h */,
@@ -227,6 +232,7 @@
 				6E8BA0FD1AFD856F008C321E /* ViewController.m in Sources */,
 				6E8BA0FA1AFD856F008C321E /* AppDelegate.m in Sources */,
 				6E8BA11C1AFD85A9008C321E /* BNRCoursesViewController.m in Sources */,
+				7134417C1B006C1100155B82 /* BNRWebViewController.m in Sources */,
 				6E8BA0F71AFD856F008C321E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,6 +430,7 @@
 				6E8BA1161AFD856F008C321E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6E8BA1171AFD856F008C321E /* Build configuration list for PBXNativeTarget "NerdFeedTests" */ = {
 			isa = XCConfigurationList;
@@ -432,6 +439,7 @@
 				6E8BA1191AFD856F008C321E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -6,19 +6,15 @@
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>D2099645-4968-4B60-B1D1-25556EAB9C58</string>
-	<key>IDESourceControlProjectName</key>
-	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>1A20443F0860146583846FB0338BFE6EC0948AA0</key>
 		<string>https://github.com/raytlin/BNR</string>
 	</dict>
-	<key>IDESourceControlProjectPath</key>
-	<string>NerdFeed/NerdFeed.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>1A20443F0860146583846FB0338BFE6EC0948AA0</key>
-		<string>../../..</string>
+		<string>bnr/</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/raytlin/BNR</string>
@@ -34,7 +30,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>1A20443F0860146583846FB0338BFE6EC0948AA0</string>
 			<key>IDESourceControlWCCName</key>
-			<string>BNR</string>
+			<string>bnr</string>
 		</dict>
 	</array>
 </dict>
