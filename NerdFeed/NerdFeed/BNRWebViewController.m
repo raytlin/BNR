@@ -19,13 +19,29 @@
     webView.scalesPageToFit = YES;
     self.view = webView;
     
-    //add the stupid back button
-    UIToolbar *toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, [[UIScreen mainScreen]bounds].size.height - 44, [[UIScreen mainScreen]bounds].size.width, 44)];
+    self.navigationItem.leftBarButtonItem = [self.splitViewController displayModeButtonItem];
+    
+}
+
+-(void)deleteBar:(id)sender{
+    [self.toolbar removeFromSuperview];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [self addToolbar:[[UIScreen mainScreen]bounds].size];
+    //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(deleteBar:)];
+}
+
+-(void)addToolbar:(CGSize)size{
+    //add the stupid back button and toolbar
+    self.toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, size.height - 44, size.width, 44)];
     UIBarButtonItem* backButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(backButtonPressed:)];
     UIBarButtonItem* forwardButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(forwardButtonPressed:)];
     NSArray* buttonItems = [[NSArray alloc]initWithObjects:backButton, forwardButton, nil];
-    [toolbar setItems:buttonItems];
-    [self.view addSubview:toolbar];
+    [self.toolbar setItems:buttonItems];
+    [self.view addSubview:self.toolbar];
+    NSArray* hConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[toolbar]|" options:0 metrics:nil views:@{@"toolbar" : self.toolbar}];
+    [self.view addConstraints:hConstraints];
 }
 
 -(void)backButtonPressed:(id)sender{
@@ -52,6 +68,15 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+
+-(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator{
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    //self.toolbar = nil;
+    [self deleteBar:self];
+    [self addToolbar:size];
 }
 
 

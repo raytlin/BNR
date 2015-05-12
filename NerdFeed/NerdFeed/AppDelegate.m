@@ -26,7 +26,16 @@
     BNRWebViewController* wvc = [[BNRWebViewController alloc]init];
     cvc.webViewController = wvc;
     
-    self.window.rootViewController = masterNav;
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        UINavigationController *detailNav = [[UINavigationController alloc]initWithRootViewController:wvc];
+        UISplitViewController *svc = [[UISplitViewController alloc]init];
+        svc.delegate = wvc;
+        svc.viewControllers = [[NSArray alloc]initWithObjects:masterNav,detailNav, nil];
+        
+        self.window.rootViewController = svc;
+    }else{
+        self.window.rootViewController = masterNav;
+    }
     
     
     return YES;

@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BNRWebViewController : UIViewController
+@interface BNRWebViewController : UIViewController <UISplitViewControllerDelegate>
 
 @property (nonatomic)NSURL* url;
+
+@property(nonatomic, strong)UIToolbar* toolbar;
 
 @end
