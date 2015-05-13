@@ -29,7 +29,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [self addToolbar:[[UIScreen mainScreen]bounds].size];
-    //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(deleteBar:)];
+    
 }
 
 -(void)addToolbar:(CGSize)size{
@@ -40,8 +40,7 @@
     NSArray* buttonItems = [[NSArray alloc]initWithObjects:backButton, forwardButton, nil];
     [self.toolbar setItems:buttonItems];
     [self.view addSubview:self.toolbar];
-    NSArray* hConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[toolbar]|" options:0 metrics:nil views:@{@"toolbar" : self.toolbar}];
-    [self.view addConstraints:hConstraints];
+    
 }
 
 -(void)backButtonPressed:(id)sender{
