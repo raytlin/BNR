@@ -1,49 +1,29 @@
 //
 //  BNRItem.h
-//  RandomItems
+//  Homepwner
 //
-//  Created by Ray Lin on 5/1/15.
+//  Created by Ray Lin on 5/16/15.
 //  Copyright (c) 2015 BananaFoundation. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 #import <UIKit/UIKit.h>
 
-@interface BNRItem : NSObject <NSCoding>
 
-@property (nonatomic, copy)NSString* itemName;
-@property (nonatomic, copy)NSString* serialNumber;
-@property (nonatomic)int valueInDollars;
-@property (nonatomic, strong)NSDate* dateCreated;
+@class NSManagedObject;
 
-@property (nonatomic, copy)NSString* itemKey;
+@interface BNRItem : NSManagedObject
 
-@property (nonatomic, strong) UIImage* thumbnail;
+@property (nonatomic, retain) NSDate * dateCreated;
+@property (nonatomic, retain) NSString * itemKey;
+@property (nonatomic, retain) NSString * itemName;
+@property (nonatomic) double orderingValue;
+@property (nonatomic, retain) NSString * serialNumber;
+@property (nonatomic, retain) UIImage* thumbnail;
+@property (nonatomic) int valueInDollars;
+@property (nonatomic, retain) NSManagedObject *assetType;
 
-- (void)setThumbnailFromImage:(UIImage*)image;
-
-- (void) setItemName:(NSString*)str;
-- (NSString*) itemName;
-
-- (void)setSerialNumber:(NSString*)str;
-- (NSString*)serialNumber;
-
--(void)setValueInDollars:(int)v;
-- (int)valueInDollars;
-
--(NSDate *)dateCreated;
-
-//designamted initializer
--(instancetype)initWithItemName:(NSString*)name valueInDollars:(int)value serialNumber:(NSString*)sNumber;
-
--(instancetype)initWithItemName:(NSString*)name;
-
--(instancetype)initWithitemName:(NSString*)name serialNumber:(NSString*)sNumber;
-
-+(instancetype)randomItem;
-
-
-
-
+-(void)setThumbnailFromImage:(UIImage*)image;
 
 @end
