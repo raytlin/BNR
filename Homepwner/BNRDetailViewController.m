@@ -11,6 +11,7 @@
 #import "BNRDateChangeViewController.h"
 #import "BNRImageStore.h"
 #import "BNRItemsStore.h"
+#import "BNRAssetTypeViewController.h"
 
 @interface BNRDetailViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UIPopoverControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
@@ -27,10 +28,16 @@
 @property (weak, nonatomic) IBOutlet UILabel* nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel* serialNumberLabel;
 @property (weak, nonatomic) IBOutlet UILabel* valueLabel;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *assetTypeButton;
 
 @end
 
 @implementation BNRDetailViewController
+- (IBAction)showAssetTypePicker:(id)sender {
+    BNRAssetTypeViewController *avc = [[BNRAssetTypeViewController alloc]init];
+    avc.item = self.item;
+    [self.navigationController pushViewController:avc animated:YES];
+}
 
 -(void)updateFonts{
     UIFont* font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
@@ -197,8 +204,8 @@
     
     [self.view endEditing:YES];
     
-    BNRItem* item = [[BNRItem alloc]init];
-    item = self.item;
+    BNRItem* item = self.item;
+    
     
     item.itemName = self.nameField.text;
     item.serialNumber = self.serialNumberField.text;
@@ -228,6 +235,14 @@
     UIImage* imageToDisplay = [[BNRImageStore sharedStore]imageForKey:imageKey];
     
     self.imageView.image = imageToDisplay;
+    
+    NSString* typeLabel = [self.item.assetType valueForKey:@"label"];
+    if (!typeLabel) {
+        typeLabel = @"None";
+    }
+    self.assetTypeButton.title = [NSString stringWithFormat:@"Type: %@", typeLabel];
+    
+    
     [self updateFonts];
     
 }
