@@ -11,7 +11,7 @@
 #import "BNRImageStore.h"
 #import "BNRImageViewController.h"
 
-@interface BNRItemsTableView () <UIPopoverControllerDelegate>
+@interface BNRItemsTableView () <UIPopoverControllerDelegate, UIDataSourceModelAssociation>
 
 @property (nonatomic, strong) UIPopoverController *imagePopover;
 
@@ -19,6 +19,33 @@
 
 @implementation BNRItemsTableView
 
+-(NSString *)modelIdentifierForElementAtIndexPath:(NSIndexPath *)idx inView:(UIView *)view{
+    NSString* identifier = nil;
+    if (idx && view) {
+        BNRItem* item = [[BNRItemsStore sharedStore]allItems][idx.row];
+        identifier = item.itemKey;
+    }
+    return identifier;
+}
+
+-(NSIndexPath *)indexPathForElementWithModelIdentifier:(NSString *)identifier inView:(UIView *)view{
+    NSIndexPath * indexPath = nil;
+    if (identifier && view) {
+        NSArray* items = [[BNRItemsStore sharedStore]allItems];
+        for (BNRItem* item in items) {
+            if ([identifier isEqualToString:item.itemKey]) {
+                int row = [items indexOfObjectIdenticalTo:item];
+                indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+                break;
+            }
+        }
+    }
+    return indexPath;
+}
+
++(UIViewController *)viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents coder:(NSCoder *)coder{
+    return [[self alloc]init];
+}
 
 -(IBAction)addNewItem:(id)sender{
     
@@ -33,6 +60,8 @@
     };
     
     UINavigationController* navController = [[UINavigationController alloc]initWithRootViewController:detailViewController];
+    
+    navController.restorationIdentifier = NSStringFromClass([UINavigationController class]);
     
     navController.modalPresentationStyle = UIModalPresentationFormSheet;
     
@@ -58,6 +87,8 @@
         UINavigationItem *navItem = self.navigationItem;
         navItem.title = @"Homepwner";
         
+        self.restorationIdentifier = NSStringFromClass([self class]);
+        self.restorationClass = [self class];
         
         UIBarButtonItem* bbi = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewItem:)];
         navItem.rightBarButtonItem = bbi;
@@ -156,6 +187,17 @@
     //[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
     UINib *nib = [UINib nibWithNibName:@"BNRItemCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"BNRItemCell"];
+    
+    self.tableView.restorationIdentifier = @"BNRItemsViewControllerTableView";
+    
+}
+-(void)encodeRestorableStateWithCoder:(NSCoder *)coder{
+    [coder encodeBool:self.isEditing forKey:@"TableViewIsEditing"];
+    [super encodeRestorableStateWithCoder:coder];
+}
+
+-(void)decodeRestorableStateWithCoder:(NSCoder *)coder{
+    self.editing = [coder decodeBoolForKey:@"TableViewIsEditing"];
     
 }
 

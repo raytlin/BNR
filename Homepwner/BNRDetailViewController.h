@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BNRItem.h"
 
-@interface BNRDetailViewController : UIViewController
+@interface BNRDetailViewController : UIViewController <UIViewControllerRestoration>
 
 @property (nonatomic, strong) BNRItem* item;
 

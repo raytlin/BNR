@@ -16,17 +16,35 @@
 
 @implementation AppDelegate
 
+-(UIViewController *)application:(UIApplication *)application viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents coder:(NSCoder *)coder{
+    UIViewController *vc = [[UINavigationController alloc]init];
+    vc.restorationIdentifier = [identifierComponents lastObject];
+    if ([identifierComponents count]==1) {
+        self.window.rootViewController = vc;
+    }
+    return vc;
+}
+
+-(BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
+    self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    return YES;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    if (!self.window.rootViewController) {
     
     BNRItemsTableView* itemsViewController = [[BNRItemsTableView alloc]init];
     
-    //self.window.rootViewController = itemsViewController;
+    
     
     UINavigationController* navController = [[UINavigationController alloc]initWithRootViewController:itemsViewController];
-    self.window.rootViewController = navController;
     
+    navController.restorationIdentifier = NSStringFromClass([navController class]);
+    
+    self.window.rootViewController = navController;
+    }
     return YES;
 }
 

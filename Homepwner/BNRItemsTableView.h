@@ -12,7 +12,7 @@
 #import "BNRItemsStore.h"
 #import "BNRDetailViewController.h"
 
-@interface BNRItemsTableView : UITableViewController <UITableViewDelegate, UITableViewDataSource>
+@interface BNRItemsTableView : UITableViewController <UITableViewDelegate, UITableViewDataSource, UIViewControllerRestoration>
 
 
 
