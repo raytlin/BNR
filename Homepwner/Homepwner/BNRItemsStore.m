@@ -9,6 +9,7 @@
 #import "BNRItemsStore.h"
 #import "BNRItem.h"
 #import "BNRImageStore.h"
+#import "AppDelegate.h"
 
 @import CoreData;
 
@@ -130,6 +131,12 @@
     NSLog(@"adding after %lu items, order = %.2f", (unsigned long)[self.privateItems count], order);
     BNRItem* item = [NSEntityDescription insertNewObjectForEntityForName:@"BNRItem" inManagedObjectContext:self.context];
     item.orderingValue = order;
+    
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    item.valueInDollars = [defaults integerForKey:BNRNextItemValuePrefsKey];
+    item.itemName = [defaults objectForKey:BNRNextItemNamePrefsKey];
+    
+    NSLog(@"defaults %@", [defaults dictionaryRepresentation]);
     
     [self.privateItems addObject:item];
     return item;

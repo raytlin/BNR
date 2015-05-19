@@ -10,11 +10,20 @@
 #import "BNRItemsTableView.h"
 #import "BNRImageStore.h"
 
+NSString * const BNRNextItemValuePrefsKey = @"NextItemValue";
+NSString * const BNRNextItemNamePrefsKey = @"NextItemName";
+
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
+
++(void)initialize{
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary* factorySettings = @{BNRNextItemValuePrefsKey : @75, BNRNextItemNamePrefsKey : @"Coffee Cup"};
+    [defaults registerDefaults:factorySettings];
+}
 
 -(UIViewController *)application:(UIApplication *)application viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents coder:(NSCoder *)coder{
     UIViewController *vc = [[UINavigationController alloc]init];
