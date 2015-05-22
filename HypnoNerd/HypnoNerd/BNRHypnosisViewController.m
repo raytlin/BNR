@@ -10,6 +10,8 @@
 
 @interface BNRHypnosisViewController () <UITextFieldDelegate>
 
+@property (nonatomic, weak)UITextField* textField;
+
 @end
 
 @implementation BNRHypnosisViewController
@@ -43,8 +45,35 @@
         
         [self.view addSubview:messageLabel];
         
+        messageLabel.alpha = 0.0;
+        [UIView animateKeyframesWithDuration:0.5 delay:0.0 options:UIViewAnimationCurveEaseIn animations:^{
+            messageLabel.alpha = 1.0;
+        } completion:nil];
+        
+        [UIView animateKeyframesWithDuration:1.0 delay:0.0 options:0 animations:^{
+            [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:0.8 animations:^{
+                messageLabel.center = self.view.center;
+            }];
+            
+            [UIView addKeyframeWithRelativeStartTime:0.8 relativeDuration:0.2 animations:^{
+                int x = arc4random()%width;
+                int y = arc4random() % height;
+                messageLabel.center = CGPointMake(x, y);
+            }];
+        } completion:^(BOOL finished){
+            NSLog(@"Animation finished");
+        }];
         
     }
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    [UIView animateWithDuration:2.0 delay:0.0 usingSpringWithDamping:0.25 initialSpringVelocity:0.0 options:0 animations:^{
+        CGRect frame = CGRectMake(40, 70, 240, 30);
+        self.textField.frame = frame;
+    } completion:NULL];
 }
 
 -(void)loadView{
@@ -55,8 +84,10 @@
     UIView* backgroundView = [[UIView alloc]initWithFrame:firstFrame];
     backgroundView.backgroundColor = [UIColor redColor];
     
-    CGRect textFieldRect = CGRectMake(40, 70, 240, 30);
-    UITextField* textField = [[UITextField alloc]initWithFrame:textFieldRect];
+    //CGRect textFieldRect = CGRectMake(40, 70, 240, 30);
+    //UITextField* textField = [[UITextField alloc]initWithFrame:textFieldRect];
+    
+    UITextField* textField = [[UITextField alloc]init];
     
     textField.borderStyle = UITextBorderStyleRoundedRect;
     
@@ -67,7 +98,7 @@
     
     
     
-    
+    self.textField = textField;
     [backgroundView addSubview:textField];
     
     
