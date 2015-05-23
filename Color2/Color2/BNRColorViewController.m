@@ -1,6 +1,6 @@
 //
 //  BNRColorViewController.m
-//  Colorboard
+//  Color2
 //
 //  Created by Ray Lin on 5/23/15.
 //  Copyright (c) 2015 BananaFoundation. All rights reserved.
@@ -17,21 +17,39 @@
 @end
 
 @implementation BNRColorViewController
-
-
-- (IBAction)changeColor:(id)sender {
+- (IBAction)changer:(id)sender {
     float red = self.redSlider.value;
     float blue = self.blueSlider.value;
     float green = self.greenSlider.value;
     
-    UIColor *color = [UIColor colorWithRed:red green:green blue:blue alpha:1.0];
-    
+    UIColor* color = [UIColor colorWithRed:red green:green blue:blue alpha:1.0];
     self.view.backgroundColor = color;
+}
+- (IBAction)changeb:(id)sender {
+    float red = self.redSlider.value;
+    float blue = self.blueSlider.value;
+    float green = self.greenSlider.value;
     
+    UIColor* color = [UIColor colorWithRed:red green:green blue:blue alpha:1.0];
+    self.view.backgroundColor = color;
+}
+- (IBAction)changeg:(id)sender {
+    float red = self.redSlider.value;
+    float blue = self.blueSlider.value;
+    float green = self.greenSlider.value;
+    
+    UIColor* color = [UIColor colorWithRed:red green:green blue:blue alpha:1.0];
+    self.view.backgroundColor = color;
 }
 
-- (IBAction)dismiss:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+
+-(IBAction)changeColor:(id)sender{
+    float red = self.redSlider.value;
+    float blue = self.blueSlider.value;
+    float green = self.greenSlider.value;
+    
+    UIColor* color = [UIColor colorWithRed:red green:green blue:blue alpha:1.0];
+    self.view.backgroundColor = color;
 }
 
 - (void)viewDidLoad {

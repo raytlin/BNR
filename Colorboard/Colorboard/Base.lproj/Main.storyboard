@@ -105,10 +105,10 @@
             </objects>
             <point key="canvasLocation" x="3267" y="939"/>
         </scene>
-        <!--View Controller-->
+        <!--Color View Controller-->
         <scene sceneID="UW6-3F-Cbs">
             <objects>
-                <viewController id="t4s-Tk-OsF" sceneMemberID="viewController">
+                <viewController id="t4s-Tk-OsF" customClass="BNRColorViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XrQ-wz-2AY"/>
                         <viewControllerLayoutGuide type="bottom" id="VPx-fA-uRl"/>
@@ -124,14 +124,24 @@
                             </textField>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="voC-n9-vCh">
                                 <rect key="frame" x="241" y="162" width="118" height="31"/>
+                                <connections>
+                                    <action selector="changeColor:" destination="t4s-Tk-OsF" eventType="valueChanged" id="QIg-5k-oAk"/>
+                                </connections>
                             </slider>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="n3g-EI-NPs">
-                                <rect key="frame" x="241" y="225" width="118" height="31"/>
+                                <rect key="frame" x="241" y="227" width="118" height="31"/>
+                                <connections>
+                                    <action selector="changeColor:" destination="t4s-Tk-OsF" eventType="valueChanged" id="D3N-AB-fTk"/>
+                                </connections>
                             </slider>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="EQd-SX-Vjc">
                                 <rect key="frame" x="241" y="292" width="118" height="31"/>
+                                <connections>
+                                    <action selector="changeColor:" destination="t4s-Tk-OsF" eventType="valueChanged" id="VrC-ed-GRg"/>
+                                </connections>
                             </slider>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="eMj-5l-shO">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="2Oi-JH-rhG">
