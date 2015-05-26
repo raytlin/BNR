@@ -35,12 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+   
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,6 +62,24 @@
     cell.textLabel.text = cd.name;
     
     return cell;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier  isEqual: @"NewColor"]) {
+        BNRColorDescription* color = [[BNRColorDescription alloc]init];
+        [self.colors addObject:color];
+        
+        UINavigationController* nc = segue.destinationViewController;
+        BNRColorViewController *mvc = (BNRColorViewController*)[nc topViewController];
+        
+        mvc.colorDescription = color;
+    } else if ([segue.identifier isEqualToString:@"ExistingColor"]){
+        NSIndexPath* ip = [self.tableView indexPathForCell:sender];
+        BNRColorDescription* color = self.colors[ip.row];
+        BNRColorViewController *cvc = (BNRColorViewController*)segue.destinationViewController;
+        cvc.colorDescription = color;
+        cvc.existingColor = YES;
+    }
 }
 
 @end

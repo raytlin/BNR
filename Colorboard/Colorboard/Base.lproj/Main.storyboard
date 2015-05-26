@@ -33,7 +33,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="t4s-Tk-OsF" kind="show" id="OJJ-wD-bDf"/>
+                                    <segue destination="t4s-Tk-OsF" kind="show" identifier="ExistingColor" id="OJJ-wD-bDf"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -46,14 +46,14 @@
                     <navigationItem key="navigationItem" title="Colors" id="UF8-ZS-vXD">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="db4-Xl-Au8">
                             <connections>
-                                <segue destination="Y84-aq-fSw" kind="presentation" id="pbC-Fv-cgt"/>
+                                <segue destination="Y84-aq-fSw" kind="presentation" identifier="NewColor" id="pbC-Fv-cgt"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a0E-u7-PSW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2550" y="492"/>
+            <point key="canvasLocation" x="2432" y="504"/>
         </scene>
         <!--Color View Controller-->
         <scene sceneID="UW6-3F-Cbs">
@@ -127,7 +127,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Cg-hS-Dvq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3400" y="394"/>
+            <point key="canvasLocation" x="3854" y="504"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="169-KG-5Q6">
@@ -163,7 +163,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AU9-nd-9In" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3388" y="1220"/>
+            <point key="canvasLocation" x="3146" y="974"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

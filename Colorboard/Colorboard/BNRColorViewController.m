@@ -34,14 +34,40 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    if (self.existingColor) {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    UIColor* color = self.colorDescription.color;
+    
+    CGFloat red, green, blue;
+    [color getRed:&red green:&green blue:&blue alpha:nil];
+    
+    self.redSlider.value = red;
+    self.greenSlider.value = green;
+    self.blueSlider.value = blue;
+    
+    self.view.backgroundColor = color;
+    self.textField.text = self.colorDescription.name;
+
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    self.colorDescription.name = self.textField.text;
+    self.colorDescription.color = self.view.backgroundColor;
 }
 
 /*
